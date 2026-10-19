@@ -20,7 +20,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: nvm install --lts
+        run: nvm install
 
       - name: Run tests
         run: npm test
