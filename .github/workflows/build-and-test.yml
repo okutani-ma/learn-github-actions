@@ -2,12 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
   build:
-    name: Build and Test
-    runs-on: ubuntu-latest
+    - name: Build and Test
+      runs-on: ubuntu-latest
 
   steps:
     - name: Checkout repository
