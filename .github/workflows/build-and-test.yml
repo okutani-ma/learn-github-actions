@@ -20,6 +20,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
+        needs: Set up Node.js
         run: npm install
 
       - name: Run tests
