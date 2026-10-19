@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
+
+      - name: Remove modules
+        run: rm -rd ./node_modules
 
       - name: Install dependencies
         run: npm install
