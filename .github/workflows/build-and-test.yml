@@ -1,31 +1,31 @@
 name: Node.js CI
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
-
-  workflow_dispatch:
+  push:
+   - main
 
 jobs:
-  build:
-    name: Build and Test
+  build-and-test:
+    name: Build and Test Application
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
-      - name: Remove modules
-        run: rm -rd ./node_modules
-
       - name: Install dependencies
         run: npm install
+
+      - name: Run build
+        run: npm run build
 
       - name: Run tests
         run: npm test
