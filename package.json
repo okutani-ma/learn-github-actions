@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prebuild": "eslint . && rimraf dist",
-    "build": "tsc -p tsconfig.json",
-    "postbuild": "node scripts/size.js"
+    "build": "webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -22,7 +20,8 @@
   },
   "homepage": "https://github.com/okutani-ma/learn-github-actions#readme",
   "devDependencies": {
-    "jest": "^30.5.2"
+    "jest": "^30.5.2",
+    "webpack": "^5.112.0"
   },
   "directories": {
     "test": "test"
