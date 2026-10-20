@@ -22,14 +22,11 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - name : Uninstall dependencies
-        run: rm -r node_modules
-
       - name: Install dependencies
         run: npm install
 
       - name: Run build
-        run: npm build
+        run: npm run build
 
       - name: Run tests
         run: npm test
