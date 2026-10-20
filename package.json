@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "vite.config.js"
+    "build": "vite config.js"
   },
   "repository": {
     "type": "git",
