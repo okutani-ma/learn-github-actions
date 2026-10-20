@@ -18,7 +18,7 @@
     "test": "tests"
   },
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint . --ext .ts,.tsx",
     "test": "jest",
     "build": "webpack --mode production"
   },
