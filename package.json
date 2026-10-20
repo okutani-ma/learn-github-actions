@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,11 @@
   "homepage": "https://github.com/okutani-ma/learn-github-actions#readme",
   "devDependencies": {
     "jest": "^30.5.2",
-    "webpack": "^5.112.0"
+    "webpack": "^5.0.0",
+    "webpack-cli": "^7.2.3"
   },
   "directories": {
-    "test": "test"
+    "test": "tests"
   },
   "dependencies": {
     "ansi-escapes": "^4.3.2",
