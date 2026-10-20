@@ -22,7 +22,7 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - nema : Uninstall dependencies
+      - name : Uninstall dependencies
         run: rm -r node_modules
 
       - name: Install dependencies
