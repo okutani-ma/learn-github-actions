@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "node build.js"
+    "build": "next build"
   },
   "repository": {
     "type": "git",
