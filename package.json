@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "build"
+    "prebuild": "eslint . && rimraf dist",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node scripts/size.js"
   },
   "repository": {
     "type": "git",
