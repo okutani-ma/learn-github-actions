@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "vite",
-    "build": "vite build"
+    "build": "vite build && tsc"
   },
   "repository": {
     "type": "git",
