@@ -8,54 +8,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: Lint Code
+  multiple-outputs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: "okutani-ma/learn-github-actions"
-      - name: Run linter
-        id: step1
+      - name: Set multiple outputs
+        id: set-values
         run: |
-          npm install
-          npm run lint
-          echo "version=1.0.0" >> $GITHUB_OUTPUT
+          echo "name=John Doe" >> $GITHUB_OUTPUT
+          echo "age=30" >> $GITHUB_OUTPUT
+          echo "location=Tokyo" >> $GITHUB_OUTPUT
 
-      - name: Src Directory
-        working-directory: ./src
-        run: pwd
-
-      - name: Test Directory
-        working-directory: ./tests
-        run: pwd
-
-      - name: Use output value
-        run: echo "Version is ${{ steps.step1.outputs.version }}"
-
-  test:
-    name: Run Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Execute tests
-        if: github.event_name == 'pull_request'
+      - name: Use multiple outputs
         run: |
-          npm install
-          npm test
-
-      - name: Message
-        run: echo "Test Finish"
-
-  build:
-    name: Build Application
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build
-        run: |
-          npm install
-          npm run build
-      
-      - name: Message
-        run: echo "Build Finish"
+          echo "Name: ${{ steps.set-values.outputs.name }}"
+          echo "Age: ${{ steps.set-values.outputs.age }}"
+          echo "Location: ${{ steps.set-values.outputs.location }}"
