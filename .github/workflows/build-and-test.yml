@@ -13,8 +13,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: "okutani-ma/learn-github-actions"
-          ref: "main"
-          path: "src"
       - name: Run linter
         run: |
           npm install
