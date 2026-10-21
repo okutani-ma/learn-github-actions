@@ -7,7 +7,6 @@ on:
 
   workflow_dispatch:
 
-name: Variable Override Example
 env:
   COLOR: "blue"
 
@@ -20,7 +19,7 @@ jobs:
       - name: First step
         env:
           COLOR: "red"
-        run: echo "Color in step: $COLOR"  # 出力: Color in step: red
+        run: echo "Color in step $COLOR"  # 出力: Color in step: red
 
       - name: Second step
-        run: echo "Color in job: $COLOR"   # 出力: Color in job: green
+        run: echo "Color in job $COLOR"   # 出力: Color in job: green
