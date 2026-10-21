@@ -16,4 +16,3 @@ jobs:
           DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
           echo "Connecting to database using secure password"
-          ./learn-github-actions.sh -p $DB_PASSWORD
