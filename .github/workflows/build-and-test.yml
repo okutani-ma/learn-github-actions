@@ -17,7 +17,7 @@ jobs:
           npm run lint
 
       - name: Message
-      - run: echo "Linter Finish"
+        run: echo "Linter Finish"
 
   test:
     name: Run Tests
@@ -30,7 +30,7 @@ jobs:
           npm test
 
       - name: Message
-      - run: echo "Test Finish"
+        run: echo "Test Finish"
 
   build:
     name: Build Application
@@ -43,4 +43,4 @@ jobs:
           npm run build
       
       - name: Message
-      - run: echo "Build Finish"
+        run: echo "Build Finish"
