@@ -16,8 +16,13 @@ jobs:
           npm install
           npm run lint
 
-      - name: Message
-        run: echo "Linter Finish"
+      - name: Src Directory
+        working-directory: ./src
+        run: pwd
+
+      - name: Test Directory
+        working-directory: ./test
+        run: pwd
 
   test:
     name: Run Tests
