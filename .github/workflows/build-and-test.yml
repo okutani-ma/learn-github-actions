@@ -7,23 +7,20 @@ on:
 
   workflow_dispatch:
 
+name: Variable Override Example
+env:
+  COLOR: "blue"
+
 jobs:
-  structured-debug:
+  test-job:
     runs-on: ubuntu-latest
+    env:
+      COLOR: "green"
     steps:
-      - name: Process with debug info
-        run: |
-          echo "::debug::Configuration:"
-          echo "::debug::  - OS: ${{ runner.os }}"
-          echo "::debug::  - Architecture: ${{ runner.arch }}"
-          echo "::debug::  - Workspace: ${{ github.workspace }}"
+      - name: First step
+        env:
+          COLOR: "red"
+        run: echo "Color in step: $COLOR"  # 出力: Color in step: red
 
-          for var in $(env | sort); do
-            echo "::debug::Environment: $var"
-          done
-
-          if [ -d ".git" ]; then
-            echo "::debug::Git information:"
-            echo "::debug::  - Current branch: $(git branch --show-current)"
-            echo "::debug::  - Latest commit: $(git rev-parse HEAD)"
-          fi
+      - name: Second step
+        run: echo "Color in job: $COLOR"   # 出力: Color in job: green
