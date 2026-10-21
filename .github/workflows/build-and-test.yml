@@ -14,9 +14,11 @@ jobs:
         with:
           repository: "okutani-ma/learn-github-actions"
       - name: Run linter
+        id: step1
         run: |
           npm install
           npm run lint
+          echo "version=1.0.0" >> $GITHUB_OUTPUT
 
       - name: Src Directory
         working-directory: ./src
@@ -25,6 +27,9 @@ jobs:
       - name: Test Directory
         working-directory: ./tests
         run: pwd
+
+      - name: Use output value
+        run: echo "Version is ${{ steps.step1.outputs.version }}"
 
   test:
     name: Run Tests
