@@ -7,19 +7,13 @@ on:
 
   workflow_dispatch:
 
-env:
-  COLOR: "blue"
-
 jobs:
-  test-job:
+  deploy:
     runs-on: ubuntu-latest
-    env:
-      COLOR: "green"
     steps:
-      - name: First step
+      - name: Access database
         env:
-          COLOR: "red"
-        run: echo "Color in step $COLOR"  # 出力: Color in step: red
-
-      - name: Second step
-        run: echo "Color in job $COLOR"   # 出力: Color in job: green
+          DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        run: |
+          echo "Connecting to database using secure password"
+          ./connect-db.sh -p $DB_PASSWORD
