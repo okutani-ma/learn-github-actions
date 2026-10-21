@@ -8,22 +8,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  action-outputs:
+  dynamic-values:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Generate timestamp
+        id: timestamp
+        run: echo "time=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
 
-      - name: Get repository info
-        id: repo-info
-        uses: actions/github-script@v6
-        with:
-          script: |
-            return {
-              owner: context.repo.owner,
-              name: context.repo.repo
-            }
-
-      - name: Use repository info
+      - name: Create file with timestamp
         run: |
-          echo "Repository owner: ${{ steps.repo-info.outputs.result }}"
-          echo "Location: ${{ steps.set-values.outputs.location }}"
+          echo "Creating file at ${{ steps.timestamp.outputs.time }}"
+          touch "backup_${{ steps.timestamp.outputs.time }}.txt"
