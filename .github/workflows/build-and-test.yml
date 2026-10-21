@@ -16,6 +16,9 @@ jobs:
           npm install
           npm run lint
 
+      - name: Message
+      - run: echo "Linter Finish"
+
   test:
     name: Run Tests
     runs-on: ubuntu-latest
@@ -26,6 +29,9 @@ jobs:
           npm install
           npm test
 
+      - name: Message
+      - run: echo "Test Finish"
+
   build:
     name: Build Application
     runs-on: ubuntu-latest
@@ -35,3 +41,6 @@ jobs:
         run: |
           npm install
           npm run build
+      
+      - name: Message
+      - run: echo "Build Finish"
