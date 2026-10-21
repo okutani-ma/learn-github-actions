@@ -21,7 +21,7 @@ jobs:
         run: pwd
 
       - name: Test Directory
-        working-directory: ./test
+        working-directory: ./tests
         run: pwd
 
   test:
