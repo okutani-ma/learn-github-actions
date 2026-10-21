@@ -8,14 +8,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  dynamic-values:
+  complex-error-handling:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate timestamp
-        id: timestamp
-        run: echo "time=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
+      - name: Setup
+        id: setup
+        run: echo "Setting up environment"
 
-      - name: Create file with timestamp
+      - name: Process
+        id: process
+        continue-on-error: true
         run: |
-          echo "Creating file at ${{ steps.timestamp.outputs.time }}"
-          touch "backup_${{ steps.timestamp.outputs.time }}.txt"
+          echo "Processing data"
+          exit 1
+
+      - name: Success notification
+        if: success()
+        run: echo "Process completed successfully"
+
+      - name: Warning notification
+        if: steps.process.outcome == 'failure' && steps.process.conclusion == 'success'
+        run: echo "Process completed with warnings"
+
+      - name: Failure notification
+        if: failure() && !cancelled()
+        run: echo "Process failed"
+
+      - name: Final cleanup
+        if: always()
+        run: echo "Cleaning up resources"
