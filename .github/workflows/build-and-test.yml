@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Execute tests
-        if: github.event_name == 'push'
+        if: github.event_name == 'pull_request'
         run: |
           npm install
           npm test
