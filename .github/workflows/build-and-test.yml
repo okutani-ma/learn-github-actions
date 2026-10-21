@@ -16,3 +16,4 @@ jobs:
           DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
           echo "Connecting to database using secure password"
+          $DB_PASSWORD
