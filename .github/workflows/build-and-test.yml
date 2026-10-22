@@ -30,3 +30,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: build-files
+      - name: Deploy application
+        run: |
+          cd dist
+          ./deploy.sh
