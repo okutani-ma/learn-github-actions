@@ -8,20 +8,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.number }}
     steps:
-      - id: step1
-        uses: yakubique/random-number@v1.1
-        with:
-          max: 20
-          min: 1
+      - uses: actions/checkout@v4
 
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use output
-        run: echo "Previous job output ${{ needs.job1.outputs.output1 }}"
+      - name: Build
+        run: npm run build
+
+      - name: Upload build result
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: dist
