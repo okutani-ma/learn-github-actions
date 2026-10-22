@@ -24,7 +24,7 @@ jobs:
           path: dist
 
   test:
-    name: test and deploy
+    name: test
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +32,17 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: build-files
+
+  deploy:
+    name: deploy
+    needs: test
+    runs-on: ubutu-latest
+    steps:
+      - name: Download build files
+        uses: actions/download-artifact@v8
+        with:
+          name: build-files
       - name: Deploy application
         run: |
+          cd dist
           ./deploy.sh
