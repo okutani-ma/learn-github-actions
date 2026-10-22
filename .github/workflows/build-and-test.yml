@@ -22,7 +22,7 @@ jobs:
 
       - name: Find configuration file
         id: find-config
-        uses: actions/find-file@v1
+        uses: damoun/action-find-files@v2
         with:
           pattern: "config.*.json"
 
