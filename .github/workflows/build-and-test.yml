@@ -1,4 +1,4 @@
-name: Node.js CI
+name: GitHubActions
 
 on:
   push:
@@ -8,11 +8,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  ActionsTest:
     runs-on: ubuntu-latest
     steps:
-      - name: Access database
-        env:
-          DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      - name: Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+    
+      - name: Find configuration file
+        id: find-config
+        uses: action/find-file@v1
+        with:
+          pattern: "config.*.json"
+
+      - name: Use seartch result
         run: |
-          echo "Connecting to database using secure password $DB_PASSWORD"
+          if [[ -n "${{ steps.find-config.outputs.path }}" ]]; then
+            echo "Found configuration file at: ${{ steps.find-config.outputs.path }}"
+          else
+            echo "Configuration file not found"
+          fi
