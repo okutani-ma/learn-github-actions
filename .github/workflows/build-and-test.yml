@@ -10,13 +10,16 @@ on:
 jobs:
   ActionsTest:
     runs-on: ubuntu-latest
+
     steps:
       - name: Setup
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
-    
+  
+      - uses: actions/checkout@v4
+
       - name: Find configuration file
         id: find-config
         uses: actions/find-file@v1
