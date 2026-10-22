@@ -11,12 +11,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.value }}
+      output1: ${{ steps.step1.outputs.number }}
     steps:
       - id: step1
-        uses: actions/example@v1
+        uses: yakubique/random-number@v1.1
         with:
-          param: "test"
+          max: 20
+          min: 1
 
   job2:
     needs: job1
