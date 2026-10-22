@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -23,6 +24,7 @@ jobs:
           path: dist
 
   test:
+    name: test and deploy
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -32,5 +34,5 @@ jobs:
           name: build-files
       - name: Deploy application
         run: |
-          cd dist
+          mkdir dist && cd $_
           ./deploy.sh
