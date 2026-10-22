@@ -19,7 +19,7 @@ jobs:
     
       - name: Find configuration file
         id: find-config
-        uses: action/find-file@v1
+        uses: actions/find-file@v1
         with:
           pattern: "config.*.json"
 
