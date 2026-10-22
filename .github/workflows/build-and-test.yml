@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Generate random number
         id: random
-        uses: yakubique/generate-random@v1
+        uses: yakubique/random-number@v1.1
         with:
           min: 1
           max: 100
