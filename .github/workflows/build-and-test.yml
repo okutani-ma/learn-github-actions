@@ -8,15 +8,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate-number:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.value }}
+    steps:
+      - id: step1
+        uses: action/example@v1
+        with:
+          param: "test"
+
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Generate random number
-        id: random
-        uses: yakubique/random-number@v1.1
-        with:
-          min: 1
-          max: 100
-
-      - name: Use random number
-        run: echo "Random number is ${{ steps.random.outputs.number }}"
+      - name: Use output
+        run: echo "Previous job output ${{ needs.job1.outputs.output1 }}"
