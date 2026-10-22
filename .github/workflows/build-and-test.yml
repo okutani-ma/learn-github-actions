@@ -27,6 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download build files
-        uses: actions/douwnload-artifact@v8
+        uses: actions/download-artifact@v8
         with:
           name: build-files
