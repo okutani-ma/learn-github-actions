@@ -34,5 +34,5 @@ jobs:
           name: build-files
       - name: Deploy application
         run: |
-          cd dist
+          cd ./dist
           ./deploy.sh
