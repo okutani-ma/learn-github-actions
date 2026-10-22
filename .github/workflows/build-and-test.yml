@@ -34,5 +34,8 @@ jobs:
           name: build-files
       - name: Deploy application
         run: |
-          mkdir dist && cd $_
+          if [ ! -d "dist"]; then
+           mkdir dist
+          fi
+          cd dist
           ./deploy.sh
