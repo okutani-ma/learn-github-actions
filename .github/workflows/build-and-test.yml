@@ -47,4 +47,4 @@ jobs:
       - name: Deploy application
         run: |
           cd dist
-          ls
+          ./bundle.js
