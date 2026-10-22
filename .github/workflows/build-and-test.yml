@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     name: deploy
-    needs: test
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Download build files
@@ -47,4 +47,4 @@ jobs:
       - name: Deploy application
         run: |
           cd dist
-          ./bundle.js
+          node bundle.js
