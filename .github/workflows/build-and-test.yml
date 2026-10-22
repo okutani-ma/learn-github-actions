@@ -3,7 +3,7 @@ name: GitHubActions
 on:
   push:
     branches:
-      - main
+      - practice-repository
 
   workflow_dispatch:
 
