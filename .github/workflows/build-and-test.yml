@@ -8,22 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  ActionsTest:
+  generate-number:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Find configuration file
-        id: find-config
-        uses: damoun/action-find-files@v2
+      - name: Generate random number
+        id: random
+        uses: actions/generate-random@v1
         with:
-          pattern: "config.*.json"
+          min: 1
+          max: 100
 
-      - name: Use seartch result
-        run: |
-          if [[ -n "${{ steps.find-config.outputs.path }}" ]]; then
-            echo "Found configuration file at: ${{ steps.find-config.outputs.path }}"
-          else
-            echo "Configuration file not found"
-          fi
+      - name: Use random number
+        run: echo "Random number is ${{ steps.random.outputs.number }}"
