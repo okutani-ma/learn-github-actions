@@ -44,5 +44,5 @@ jobs:
           name: build-files
       - name: Deploy application
         run: |
-          pwd
+          ls
           ./deploy.sh
