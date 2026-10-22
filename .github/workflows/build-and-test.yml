@@ -43,6 +43,4 @@ jobs:
         with:
           name: build-files
       - name: Deploy application
-        run: |
-          ls
-          ./deploy.sh
+        run: ./deploy.sh
